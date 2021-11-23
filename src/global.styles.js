@@ -28,6 +28,11 @@ export const ContainerGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
+
+  @media (max-width:767px){
+    padding: 20px;
+    grid-template-columns: 1fr;
+  }
 `
 
 export const FilterCountry = styled.div`
@@ -37,4 +42,8 @@ export const FilterCountry = styled.div`
   padding: 40px 0;
   margin: 0 auto;
   max-width: 1080px;
+
+  @media(max-width:767px){
+    flex-direction: column;
+  }
 `

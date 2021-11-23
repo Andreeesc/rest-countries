@@ -18,6 +18,9 @@ export const Form = styled.form`
     &::placeholder{
       color: var(--color-text);
     }
+    @media (max-width:767px){
+      margin-bottom: 20px;
+    }
   }
 
   button{

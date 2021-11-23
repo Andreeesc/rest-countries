@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Container = styled.header`
   padding: 20px 0;
   background-color: var(--color-card);
+  @media (max-width:767px){
+    text-align: center;
+  }
 
   div{
     max-width: 1080px;
