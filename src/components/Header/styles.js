@@ -16,6 +16,4 @@ export const Container = styled.header`
       color: var(--color-text)
     }
   }
-
-  
 `

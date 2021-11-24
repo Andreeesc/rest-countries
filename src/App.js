@@ -8,17 +8,31 @@ import { ContainerApp, ContainerGrid, FilterCountry, GlobalStyles } from "./glob
 
 function App() {
   const [countries, setCountries] = useState([])
+  const [search, setSearch] = useState('')
+  // const [query, setQuery] = useState('')
 
+  // Todos os países
   const getCountries = async () => {
-    const response = await fetch(`https://restcountries.com/v3.1/all`)
-    const data = await response.json()
-    console.log(data)
-    setCountries(data)
+    try{
+      const response = await fetch(`https://restcountries.com/v3.1/all`)
+      const data = await response.json()
+      setCountries(data)
+    } catch (err){
+      console.error(err)
+    }
   }
 
   useEffect(() => {
     getCountries()
   }, [])
+  // Todos os países
+
+
+  // Países pesquisados
+  const updateSearch = (e) => {
+     setSearch(e.target.value)
+    console.log(search)
+  }
 
   return (
     <>
@@ -30,7 +44,7 @@ function App() {
         <ContainerApp>
 
           <FilterCountry>
-            <SearchBar />
+            <SearchBar search={search} getUpdateSearch={updateSearch} />
             <FilterRegion />            
           </FilterCountry>
 
@@ -41,6 +55,7 @@ function App() {
               ))
             }
           </ContainerGrid>
+
         </ContainerApp>
 
       </div>
