@@ -7,8 +7,8 @@ import { SearchBar } from "./components/SearchBar";
 import { ContainerApp, ContainerGrid, FilterCountry, GlobalStyles } from "./global.styles";
 
 function App() {
-  const [countries, setCountries] = useState([])
-  const [search, setSearch] = useState('')
+  const [countries, setCountries] = useState([]);
+  const [search, setSearch] = useState('');
 
   // Todos os países
   const getCountries = async () => {
@@ -28,8 +28,8 @@ function App() {
 
 
   // Países pesquisados
-  const updateSearch = (e) => {
-     setSearch(e.target.value)
+  const updateSearch = e => {
+    setSearch(e.target.value)
     console.log(search)
   }
    // Países pesquisados
