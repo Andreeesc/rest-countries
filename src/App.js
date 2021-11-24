@@ -9,11 +9,13 @@ import { ContainerApp, ContainerGrid, FilterCountry, GlobalStyles } from "./glob
 function App() {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState('');
+  const [query, setQuery] = useState('all');
+  const [limit, setLimit] = useState(20)
 
   // Todos os países
   const getCountries = async () => {
     try{
-      const response = await fetch(`https://restcountries.com/v3.1/all`)
+      const response = await fetch(`https://restcountries.com/v3.1/${query}`)
       const data = await response.json()
       setCountries(data)
     } catch (err){
@@ -23,7 +25,7 @@ function App() {
 
   useEffect(() => {
     getCountries()
-  }, [])
+  }, [query])
   // Todos os países
 
 
@@ -31,6 +33,11 @@ function App() {
   const updateSearch = e => {
     setSearch(e.target.value)
     console.log(search)
+  }
+
+  const updateQuery = e => {
+    e.preventDefault()
+    setQuery(search)
   }
    // Países pesquisados
 
@@ -44,17 +51,18 @@ function App() {
         <ContainerApp>
 
           <FilterCountry>
-            <SearchBar search={search} getUpdateSearch={updateSearch} />
+            <SearchBar getSearch={search} getUpdateSearch={updateSearch} getUpdateQuery={updateQuery} />
             <FilterRegion />            
           </FilterCountry>
 
           <ContainerGrid>
             {
-              countries.map(({flags:{svg} ,name:{common}, population, region, capital}) => (
+              countries.slice(0, limit ? limit : countries.length).map(({flags:{svg} ,name:{common}, population, region, capital}) => (
                 <Country flags={svg} name={common} population={population} region={region} capital={capital} />
               ))
             }
           </ContainerGrid>
+          <button onClick={() => setLimit(limit + 20)} className='show-more'>Show More</button>
 
         </ContainerApp>
 

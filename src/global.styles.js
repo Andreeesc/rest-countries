@@ -14,6 +14,28 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  input, button{
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    background-color: var(--color-card);
+    color: var(--color-text);
+    font-family: var(--font-nunito);
+    font-weight: 300;
+  }
+  button{
+    cursor: pointer;
+    text-align: center;
+    transition: all .5s ease;
+    &:hover{
+      background-color: var(--color-text-dark);
+    }
+    &.show-more{
+      display: block;
+      margin: 0 auto;
+    }
+  }
 `
 
 export const ContainerApp = styled.div`
