@@ -9,7 +9,6 @@ import { ContainerApp, ContainerGrid, FilterCountry, GlobalStyles } from "./glob
 function App() {
   const [countries, setCountries] = useState([])
   const [search, setSearch] = useState('')
-  // const [query, setQuery] = useState('')
 
   // Todos os países
   const getCountries = async () => {
@@ -33,6 +32,7 @@ function App() {
      setSearch(e.target.value)
     console.log(search)
   }
+   // Países pesquisados
 
   return (
     <>
