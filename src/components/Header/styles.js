@@ -13,7 +13,10 @@ export const Container = styled.header`
     h1{
       font-size: 2rem;
       font-family: var(--font-nunito);
-      color: var(--color-text)
+      color: var(--color-text);
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
 `

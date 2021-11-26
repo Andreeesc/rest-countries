@@ -12,13 +12,14 @@ function App() {
   const [query, setQuery] = useState('all');
 
   // Todos os países
-  const getCountries = async () => {
+  async function getCountries(){
     try{
       const response = await fetch(`https://restcountries.com/v3.1/${query}`)
+      if(response.status !== 200) throw 'País não encontrado'
       const data = await response.json()
       setCountries(data)
     } catch (err){
-      console.error(err)
+      alert(err)
     }
   }
 
