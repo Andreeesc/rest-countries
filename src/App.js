@@ -10,7 +10,6 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('all');
-  const [limit, setLimit] = useState(20)
 
   // Todos os países
   const getCountries = async () => {
@@ -30,16 +29,16 @@ function App() {
 
 
   // Países pesquisados
-  const updateSearch = e => {
+  function updateSearch(e){
     setSearch(e.target.value)
-    console.log(search)
   }
 
-  const updateQuery = e => {
+  function updateQuery(e){
     e.preventDefault()
-    setQuery(search)
+    setQuery(`name/${search}`)
+    setSearch('')
   }
-   // Países pesquisados
+  // Países pesquisados
 
   return (
     <>
@@ -57,12 +56,11 @@ function App() {
 
           <ContainerGrid>
             {
-              countries.slice(0, limit ? limit : countries.length).map(({flags:{svg} ,name:{common}, population, region, capital}) => (
-                <Country flags={svg} name={common} population={population} region={region} capital={capital} />
+              countries.map(({flags:{svg} ,name:{common}, population, region, capital}, index) => (
+                <Country key={index} flags={svg} name={common} population={population} region={region} capital={capital} />
               ))
             }
           </ContainerGrid>
-          <button onClick={() => setLimit(limit + 20)} className='show-more'>Show More</button>
 
         </ContainerApp>
 
