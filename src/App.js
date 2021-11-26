@@ -10,6 +10,7 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('all');
+  const [region, setRegion] = useState('')
 
   // Todos os países
   async function getCountries(){
@@ -39,6 +40,12 @@ function App() {
     setQuery(`name/${search}`)
     setSearch('')
   }
+
+  function updateQueryRegion(e){
+    setRegion(e.target.value)
+    console.log(region)
+    setQuery(`region/${region}`)
+  }
   // Países pesquisados
 
   return (
@@ -52,7 +59,7 @@ function App() {
 
           <FilterCountry>
             <SearchBar getSearch={search} getUpdateSearch={updateSearch} getUpdateQuery={updateQuery} />
-            <FilterRegion />            
+            <FilterRegion getRegion={region} getUpdateRegion={updateQueryRegion} />            
           </FilterCountry>
 
           <ContainerGrid>
