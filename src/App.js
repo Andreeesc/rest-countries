@@ -16,7 +16,7 @@ function App() {
   async function getCountries(){
     try{
       const response = await fetch(`https://restcountries.com/v3.1/${query}`)
-      if(response.status !== 200) throw 'País não encontrado'
+      if(response.status !== 200) throw 'Não possível realizar essa ação'
       const data = await response.json()
       setCountries(data)
     } catch (err){
