@@ -1,13 +1,13 @@
 import { Container } from './styles';
 
-export const Country = ({ flags, name, population, region, capital }) => {
+export const Country = ({ flags, name:{common}, population, region, capital }) => {
   return (
     <Container>
       <figure>
-        <img src={flags.svg} alt={name.common} title={name.common} />
+        <img src={flags.svg} alt={common} title={common} />
       </figure>
       <div className="card-info">
-        <h2>{name.common}</h2>
+        <h2>{common}</h2>
         <p>
           <strong>Population:</strong> {population}
         </p>
