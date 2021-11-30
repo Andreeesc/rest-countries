@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -36,11 +36,11 @@ export const GlobalStyles = createGlobalStyle`
       margin: 0 auto;
     }
   }
-`
+`;
 
 export const ContainerApp = styled.div`
   background-color: var(--color-background);
-`
+`;
 
 export const ContainerGrid = styled.div`
   margin: 0 auto;
@@ -50,11 +50,11 @@ export const ContainerGrid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
 
-  @media (max-width:767px){
+  @media (max-width: 767px) {
     padding: 20px;
     grid-template-columns: 1fr;
   }
-`
+`;
 
 export const FilterCountry = styled.div`
   display: flex;
@@ -64,7 +64,7 @@ export const FilterCountry = styled.div`
   margin: 0 auto;
   max-width: 1080px;
 
-  @media(max-width:767px){
+  @media (max-width: 767px) {
     flex-direction: column;
   }
-`
+`;

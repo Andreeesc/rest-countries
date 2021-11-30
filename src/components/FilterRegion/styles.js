@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const SelectStyle = styled.select`
   padding: 10px 20px;
@@ -9,4 +9,4 @@ export const SelectStyle = styled.select`
   color: var(--color-text);
   font-family: var(--font-nunito);
   font-weight: 300;
-`
+`;

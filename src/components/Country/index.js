@@ -1,6 +1,6 @@
-import { Container } from "./styles"
+import { Container } from './styles';
 
-export const Country = ({flags, name, population, region, capital}) => {
+export const Country = ({ flags, name, population, region, capital }) => {
   return (
     <Container>
       <figure>
@@ -8,10 +8,16 @@ export const Country = ({flags, name, population, region, capital}) => {
       </figure>
       <div className="card-info">
         <h2>{name.common}</h2>
-        <p><strong>Population:</strong> {population}</p>
-        <p><strong>Region:</strong> {region}</p>
-        <p><strong>Capital:</strong> {capital}</p>
+        <p>
+          <strong>Population:</strong> {population}
+        </p>
+        <p>
+          <strong>Region:</strong> {region}
+        </p>
+        <p>
+          <strong>Capital:</strong> {capital}
+        </p>
       </div>
     </Container>
-  )
-}
+  );
+};
