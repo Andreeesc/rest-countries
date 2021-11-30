@@ -58,14 +58,14 @@ function App() {
 
           <ContainerGrid>
             {
-              countries?.filter(country =>{
+              countries?.filter(country => {
                 const countryFilter = country.name.common.toLowerCase().includes(search.toLowerCase())
                 if(search === '' || countryFilter){
                   return country
                 }
               })
-              .map(({flags:{svg}, name:{common}, population, region, capital}, index) => (
-                <Country key={index} flags={svg} name={common} population={population} region={region} capital={capital} />
+              ?.map((country, index) => (
+                <Country key={index} {...country} />
               ))
             }
           </ContainerGrid>
