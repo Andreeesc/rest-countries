@@ -35,12 +35,6 @@ function App() {
     setSearch(e.target.value)
   }
 
-  function updateQuery(e){
-    e.preventDefault()
-    setQuery(`name/${search}`)
-    setSearch('')
-  }
-
   function updateQueryRegion(e){
     setRegion(e.target.value)
     console.log(region)
@@ -58,13 +52,19 @@ function App() {
         <ContainerApp>
 
           <FilterCountry>
-            <SearchBar getSearch={search} getUpdateSearch={updateSearch} getUpdateQuery={updateQuery} />
+            <SearchBar getSearch={search} getUpdateSearch={updateSearch} />
             <FilterRegion getRegion={region} getUpdateRegion={updateQueryRegion} />            
           </FilterCountry>
 
           <ContainerGrid>
             {
-              countries.map(({flags:{svg} ,name:{common}, population, region, capital}, index) => (
+              countries?.filter(country =>{
+                const countryFilter = country.name.common.toLowerCase().includes(search.toLowerCase())
+                if(search === '' || countryFilter){
+                  return country
+                }
+              })
+              .map(({flags:{svg}, name:{common}, population, region, capital}, index) => (
                 <Country key={index} flags={svg} name={common} population={population} region={region} capital={capital} />
               ))
             }

@@ -1,14 +1,12 @@
 import { Form } from "./styles"
 
-// export const SearchBar = (getSearch, getUpdateSearch, getUpdateQuery) => {
-export const SearchBar = ({getUpdateQuery, getSearch, getUpdateSearch}) => {
+export const SearchBar = ({getSearch, getUpdateSearch}) => {
   return(
-    <Form onSubmit={getUpdateQuery}>
+    <Form>
       <input type='text' placeholder="Search for a country..." 
         value={getSearch} 
         onChange={getUpdateSearch} 
       />
-      <button type='submit'>Search</button>
     </Form>
   )
 }
