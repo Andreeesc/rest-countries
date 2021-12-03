@@ -14,13 +14,12 @@ import {
 function App() {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState('');
-  const [query, setQuery] = useState('all');
-  const [region, setRegion] = useState('');
+  const [region, setRegion] = useState([]);
 
   // Todos os países
   async function getCountries() {
     try {
-      const response = await fetch(`https://restcountries.com/v3.1/${query}`);
+      const response = await fetch(`https://restcountries.com/v3.1/all`);
       if (response.status !== 200) throw 'Não possível realizar essa ação';
       const data = await response.json();
       setCountries(data);
@@ -31,20 +30,22 @@ function App() {
 
   useEffect(() => {
     getCountries();
-  }, [query]);
+  }, []);
   // Todos os países
 
   // Países pesquisados
   function updateSearch(e) {
     setSearch(e.target.value);
   }
-
-  function updateQueryRegion(e) {
-    setRegion(e.target.value);
-    console.log(region);
-    setQuery(`region/${region}`);
-  }
   // Países pesquisados
+
+
+  // Filtragem de continente
+  function updateRegion(e){
+    console.log(e.target.value)
+    setRegion(e.target.value)
+  }
+  // Filtragem de continente
 
   return (
     <>
@@ -55,14 +56,13 @@ function App() {
         <ContainerApp>
           <FilterCountry>
             <SearchBar getSearch={search} getUpdateSearch={updateSearch} />
-            <FilterRegion
-              getRegion={region}
-              getUpdateRegion={updateQueryRegion}
-            />
+
+            <FilterRegion continent={region} getUpdateRegion={updateRegion} />
           </FilterCountry>
 
           <ContainerGrid>
-            {countries
+            {
+              [...countries]
               ?.filter(country => {
                 const countryFilter = country.name.common
                   .toLowerCase()
@@ -73,7 +73,8 @@ function App() {
               })
               ?.map((country, index) => (
                 <Country key={index} {...country} />
-              ))}
+              ))
+            }
           </ContainerGrid>
         </ContainerApp>
       </div>
