@@ -14,7 +14,7 @@ import {
 function App() {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState('');
-  const [region, setRegion] = useState([]);
+  const [region, setRegion] = useState('');
 
   // Todos os países
   async function getCountries() {
@@ -30,7 +30,7 @@ function App() {
 
   useEffect(() => {
     getCountries();
-  }, []);
+  }, [region]);
   // Todos os países
 
   // Países pesquisados
@@ -42,9 +42,9 @@ function App() {
 
   // Filtragem de continente
   function updateRegion(e){
-    console.log(e.target.value)
     setRegion(e.target.value)
   }
+
   // Filtragem de continente
 
   return (
@@ -61,20 +61,35 @@ function App() {
           </FilterCountry>
 
           <ContainerGrid>
+
             {
-              [...countries]
-              ?.filter(country => {
-                const countryFilter = country.name.common
-                  .toLowerCase()
-                  .includes(search.toLowerCase());
-                if (search === '' || countryFilter) {
-                  return country;
-                }
-              })
-              ?.map((country, index) => (
-                <Country key={index} {...country} />
-              ))
+              region === '' ? (
+                [...countries]
+                ?.filter(country => {
+                  const countryFilter = country.name.common
+                    .toLowerCase()
+                    .includes(search.toLowerCase());
+                  if (search === '' || countryFilter) {
+                    return country;
+                  }
+                })
+                ?.map((country, index) => (
+                  <Country key={index} {...country} />
+                ))
+              ) : (
+                [...countries]
+                ?.filter(country => {
+                  const regionFilter = country.region.includes(region);
+                  if (region === '' || regionFilter) {
+                    return country;
+                  }
+                })
+                ?.map((country, index) => (
+                  <Country key={index} {...country} />
+                ))
+              )
             }
+
           </ContainerGrid>
         </ContainerApp>
       </div>
