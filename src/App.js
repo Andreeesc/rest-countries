@@ -84,6 +84,14 @@ function App() {
                     return country;
                   }
                 })
+                ?.filter(country => {
+                  const countryFilter = country.name.common
+                    .toLowerCase()
+                    .includes(search.toLowerCase());
+                  if (search === '' || countryFilter) {
+                    return country;
+                  }
+                })
                 ?.map((country, index) => (
                   <Country key={index} {...country} />
                 ))
