@@ -1,8 +1,8 @@
-import { SelectStyle } from './styles';
+import * as S from './styles'
 
 export const FilterRegion = ({ continent, getUpdateRegion }) => {
   return (
-    <SelectStyle value={continent} onChange={getUpdateRegion}>
+    <S.SelectStyle value={continent} onChange={getUpdateRegion}>
       <option value="">Filter by Region</option>
       <option value="Africa">Africa</option>
       <option value="Americas">Americas</option>
@@ -10,6 +10,6 @@ export const FilterRegion = ({ continent, getUpdateRegion }) => {
       <option value="Asia">Asia</option>
       <option value="Europe">Europe</option>
       <option value="Oceania">Oceania</option>
-    </SelectStyle>
+    </S.SelectStyle>
   );
 };

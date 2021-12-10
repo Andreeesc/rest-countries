@@ -3,11 +3,8 @@ import styled, { createGlobalStyle } from 'styled-components';
 export const GlobalStyles = createGlobalStyle`
 
   html{
-    --color-background: hsl(207, 26%, 17%);
-    --color-card: hsl(209, 23%, 22%);    
-    --color-text-dark: hsl(0, 0%, 52%);
-    --color-text: hsl(0, 0%, 100%);
     --font-nunito: 'Nunito Sans', sans-serif;
+    --drop-shadow: hsl(209, 23%, 22%);
   }
 
   *{
@@ -19,8 +16,8 @@ export const GlobalStyles = createGlobalStyle`
     padding: 10px 20px;
     outline: none;
     border: none;
-    background-color: var(--color-card);
-    color: var(--color-text);
+    background-color: ${ ({ theme }) => theme.colorBackground};
+    color: ${ ({ theme }) => theme.colorText};
     font-family: var(--font-nunito);
     font-weight: 300;
   }
@@ -29,7 +26,7 @@ export const GlobalStyles = createGlobalStyle`
     text-align: center;
     transition: all .5s ease;
     &:hover{
-      background-color: var(--color-text-dark);
+      background-color: ${ ({ theme }) => theme.colorTextDark};
     }
     &.show-more{
       display: block;
@@ -39,7 +36,7 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const ContainerApp = styled.div`
-  background-color: var(--color-background);
+  background-color: ${ ({ theme }) => theme.colorBackground};
 `;
 
 export const ContainerGrid = styled.div`

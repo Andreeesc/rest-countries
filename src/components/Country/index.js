@@ -1,8 +1,8 @@
-import { Container } from './styles';
+import * as S from './styles'
 
 export const Country = ({ flags, name:{common}, population, region, capital }) => {
   return (
-    <Container>
+    <S.Container>
       <figure>
         <img src={flags.svg} alt={common} title={common} />
       </figure>
@@ -18,6 +18,6 @@ export const Country = ({ flags, name:{common}, population, region, capital }) =
           <strong>Capital:</strong> {capital}
         </p>
       </div>
-    </Container>
+    </S.Container>
   );
 };

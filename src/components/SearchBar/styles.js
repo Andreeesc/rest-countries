@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 export const Form = styled.form`
   input {
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+    border-radius: 5px;
+    background-color: ${ ({ theme }) => theme.colorCard};
+    max-width: 100%;
+    filter: drop-shadow(0 0 2px var(--drop-shadow));
 
     &::placeholder {
-      color: var(--color-text);
+      color: ${ ({ theme }) => theme.colorText};
     }
     @media (max-width: 767px) {
       margin-bottom: 20px;
@@ -14,7 +16,7 @@ export const Form = styled.form`
   }
 
   button {
-    border-left: 1px solid var(--color-text-dark);
+    border-left: 1px solid ${ ({ theme }) => theme.colorTextDark};
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
   }
