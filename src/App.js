@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react';
 
 import { Country } from './components/Country';
 import { FilterRegion } from './components/FilterRegion';
-import { Header } from './components/Header';
 import { SearchBar } from './components/SearchBar';
+import { Header } from './components/Header';
 import {
+  GlobalStyles,
   ContainerApp,
   ContainerGrid,
   FilterCountry,
-  GlobalStyles,
 } from './global.styles';
 
 function App() {
+
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState('');
   const [region, setRegion] = useState('');
@@ -44,7 +45,6 @@ function App() {
   function updateRegion(e){
     setRegion(e.target.value)
   }
-
   // Filtragem de continente
 
   return (

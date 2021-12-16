@@ -17,6 +17,14 @@ export const Container = styled.header`
       &:hover {
         cursor: pointer;
       }
+      a{
+        text-decoration: none;
+        color: var(--color-text);
+        &:hover,
+        &:active{
+          color: var(--color-text);
+        }
+      }
     }
   }
 `;

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Container } from './styles';
 
 export const Country = ({ flags, name:{common}, population, region, capital }) => {
@@ -7,7 +8,9 @@ export const Country = ({ flags, name:{common}, population, region, capital }) =
         <img src={flags.svg} alt={common} title={common} />
       </figure>
       <div className="card-info">
-        <h2>{common}</h2>
+        <Link to="/country">
+          <h2>{common}</h2>
+        </Link>
         <p>
           <strong>Population:</strong> {population}
         </p>

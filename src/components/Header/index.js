@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Container } from './styles';
 
 export const Header = () => {
@@ -5,7 +6,9 @@ export const Header = () => {
     <Container>
       <div>
         <h1 onClick={() => window.location.reload(false)}>
-          Where in the world?
+          <Link to="/">
+            Where in the world?
+          </Link>
         </h1>
       </div>
     </Container>
